@@ -2,8 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Lock, ArrowRight } from 'lucide-react';
 
-const isProd = true
-
+const isProd = process.env.NODE_ENV === 'production';
 const IMG = isProd ? '/mini-coffre.fr/images/produits' : '/images/produits';
 
 const products = [

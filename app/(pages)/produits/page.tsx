@@ -6,7 +6,8 @@ export const metadata: Metadata = {
   description: "Découvrez notre gamme de mini coffres muraux discrets en Ø60mm et Ø100mm. Versions double bouton, triple bouton et à clé.",
 };
 
-const IMG = '/images/produits';
+const isProd = process.env.NODE_ENV === 'production';
+const IMG = isProd ? '/mini-coffre.fr/images/produits' : '/images/produits';
 
 const products: Product[] = [
   {
