@@ -4,7 +4,7 @@ import { Lock, ArrowRight } from 'lucide-react';
 
 const isProd = true
 
-const IMG = isProd ? 'mini-coffre.fr/images/produits' : '/images/produits';
+const IMG = isProd ? '/mini-coffre.fr/images/produits' : '/images/produits';
 
 const products = [
   { id: 1, diameter: 'Ø 60 mm', variant: 'Double bouton', description: 'Ouverture par 2 boutons simultanés. Accès rapide et discret.', image: `${IMG}/thumbnail_coffre120220929-88372-je5jor.jpeg`, tag: 'Compact' },
