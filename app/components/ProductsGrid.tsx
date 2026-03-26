@@ -102,9 +102,8 @@ function Carousel({ product, onClose }: { product: Product; onClose: () => void 
               <button
                 key={src}
                 onClick={() => setCurrent(i)}
-                className={`relative shrink-0 w-14 h-14 rounded-lg overflow-hidden border-2 transition-colors ${
-                  i === current ? 'border-(--gold-mid)' : 'border-(--border) opacity-60 hover:opacity-100'
-                }`}
+                className={`relative shrink-0 w-14 h-14 rounded-lg overflow-hidden border-2 transition-colors ${i === current ? 'border-(--gold-mid)' : 'border-(--border) opacity-60 hover:opacity-100'
+                  }`}
               >
                 <Image
                   src={src}
@@ -136,9 +135,8 @@ function Carousel({ product, onClose }: { product: Product; onClose: () => void 
 function ProductCard({ product, onOpen }: { product: Product; onOpen: () => void }) {
   return (
     <div
-      className={`relative bg-white rounded-xl border flex flex-col overflow-hidden transition-all duration-200 hover:shadow-md cursor-pointer ${
-        product.popular ? 'border-(--gold-mid)' : 'border-(--border)'
-      }`}
+      className={`relative bg-white rounded-xl border flex flex-col overflow-hidden transition-all duration-200 hover:shadow-md cursor-pointer ${product.popular ? 'border-(--gold-mid)' : 'border-(--border)'
+        }`}
       onClick={onOpen}
     >
       {product.popular && (
