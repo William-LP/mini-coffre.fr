@@ -61,11 +61,6 @@ export default function Footer() {
                   Mentions légales
                 </Link>
               </li>
-              <li>
-                <Link href="/plan-du-site" className="text-white/60 hover:text-white text-sm transition-colors duration-200">
-                  Plan du site
-                </Link>
-              </li>
             </ul>
             <div className="space-y-1.5 text-xs text-white/35">
               <div>SIRET : 942 949 470</div>

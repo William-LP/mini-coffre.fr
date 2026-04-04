@@ -18,6 +18,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
+button, [role="button"], a {
+  cursor: pointer;
+}
+
 body {
   background: var(--bg);
   color: var(--text);

@@ -4,19 +4,9 @@ import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Check, ArrowRight, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import type { Product } from '@/app/lib/products';
 
-export type Product = {
-  id: number;
-  diameter: number;
-  variant: string;
-  shortDesc: string;
-  description: string;
-  features: string[];
-  image: string;
-  images: string[];
-  popular?: boolean;
-  tag?: string;
-};
+export type { Product };
 
 function Carousel({ product, onClose }: { product: Product; onClose: () => void }) {
   const [current, setCurrent] = useState(0);
@@ -139,17 +129,7 @@ function ProductCard({ product, onOpen }: { product: Product; onOpen: () => void
         }`}
       onClick={onOpen}
     >
-      {product.popular && (
-        <div className="absolute top-3 left-3 z-10 px-3 py-1 bg-(--navy) text-white text-xs font-bold rounded-full">
-          {product.tag || 'Populaire'}
-        </div>
-      )}
-      {product.tag && !product.popular && (
-        <div className="absolute top-3 right-3 z-10 px-3 py-1 bg-(--bg) text-(--muted) text-xs rounded-full border border-(--border)">
-          {product.tag}
-        </div>
-      )}
-      {product.images.length > 1 && (
+{product.images.length > 1 && (
         <div className="absolute top-3 right-3 z-10 px-2 py-1 bg-black/50 text-white text-xs rounded-full">
           {product.images.length} photos
         </div>
@@ -167,7 +147,8 @@ function ProductCard({ product, onOpen }: { product: Product; onOpen: () => void
 
       <div className="p-6 flex flex-col flex-1">
         <h3 className="text-(--text) font-bold text-lg mb-1">{product.variant}</h3>
-        <p className="text-(--gold) text-xs font-medium tracking-wider uppercase mb-3">{product.shortDesc}</p>
+        <p className="text-(--gold) text-xs font-medium tracking-wider uppercase mb-2">{product.shortDesc}</p>
+        <p className="text-(--text) font-bold text-xl mb-4">{product.price} €</p>
         <p className="text-(--muted) text-sm leading-relaxed mb-5 flex-1">{product.description}</p>
 
         <ul className="space-y-1.5 mb-5">

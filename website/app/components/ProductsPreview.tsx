@@ -1,17 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Lock, ArrowRight } from 'lucide-react';
-
-const IMG = '/images/produits';
-
-const products = [
-  { id: 1, diameter: 'Ø 60 mm', variant: 'Double bouton', description: 'Ouverture par 2 boutons simultanés. Accès rapide et discret.', image: `${IMG}/thumbnail_coffre120220929-88372-je5jor.jpeg`, tag: 'Compact' },
-  { id: 2, diameter: 'Ø 60 mm', variant: 'Triple bouton', description: 'Sécurité renforcée par une combinaison à 3 boutons.', image: `${IMG}/p102074120220929-398019-5rypon.jpeg`, tag: 'Populaire' },
-  { id: 3, diameter: 'Ø 60 mm', variant: 'À clé', description: 'Mécanisme classique à clé. Robuste et fiable.', image: `${IMG}/dsc_067920220929-398019-1n072cc.jpeg`, tag: '' },
-  { id: 4, diameter: 'Ø 100 mm', variant: 'Double bouton', description: 'Grand format double bouton. Capacité augmentée.', image: `${IMG}/dsc_068720220929-88372-qey2vu.jpeg`, tag: 'Grand format' },
-  { id: 5, diameter: 'Ø 100 mm', variant: 'Triple bouton', description: 'Grand volume + combinaison triple bouton. Protection optimale.', image: `${IMG}/dsc_070320220929-398019-tck0o6.jpeg`, tag: 'Recommandé' },
-  { id: 6, diameter: 'Ø 100 mm', variant: 'À clé', description: 'Grand coffre à clé pour objets de taille plus importante.', image: `${IMG}/cimg173820220929-398019-nk83c2.jpeg`, tag: '' },
-];
+import { products } from '@/app/lib/products';
 
 export default function ProductsPreview() {
   return (
@@ -32,7 +22,7 @@ export default function ProductsPreview() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {products.map(({ id, diameter, variant, description, image, tag }) => (
+          {products.map(({ id, diameter, variant, shortDesc, image, tag }) => (
             <Link
               key={id}
               href="/produits"
@@ -41,7 +31,7 @@ export default function ProductsPreview() {
               <div className="relative w-14 h-14 rounded-lg shrink-0 overflow-hidden">
                 <Image
                   src={image}
-                  alt={`Mini coffre ${diameter} ${variant}`}
+                  alt={`Mini coffre Ø ${diameter} mm ${variant}`}
                   fill
                   className="object-cover"
                   sizes="56px"
@@ -56,8 +46,8 @@ export default function ProductsPreview() {
                     </span>
                   )}
                 </div>
-                <div className="text-(--subtle) text-xs mb-1.5">{diameter}</div>
-                <p className="text-(--muted) text-sm leading-relaxed">{description}</p>
+                <div className="text-(--subtle) text-xs mb-1.5">Ø {diameter} mm</div>
+                <p className="text-(--muted) text-sm leading-relaxed">{shortDesc}</p>
               </div>
             </Link>
           ))}
