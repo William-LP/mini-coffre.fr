@@ -1,6 +1,6 @@
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+export const dynamic = 'force-dynamic';
 
 const MODEL_PRICES: Record<string, number> = {
   'c60-db': 4900,
@@ -12,6 +12,8 @@ const MODEL_PRICES: Record<string, number> = {
 };
 
 export async function POST(request: Request) {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+
   const { modelId, quantity, email } = await request.json();
 
   const unitPrice = MODEL_PRICES[modelId];
