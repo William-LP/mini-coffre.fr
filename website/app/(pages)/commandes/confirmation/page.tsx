@@ -1,13 +1,34 @@
+import Stripe from 'stripe';
 import { ShieldCheck, XCircle } from 'lucide-react';
 import Link from 'next/link';
+
+export const dynamic = 'force-dynamic';
+
+async function verifyPaymentIntent(paymentIntentId: string): Promise<boolean> {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+  try {
+    const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+    return paymentIntent.status === 'succeeded';
+  } catch {
+    return false;
+  }
+}
 
 export default async function ConfirmationPage({
   searchParams,
 }: {
-  searchParams: Promise<{ redirect_status?: string }>;
+  searchParams: Promise<{
+    redirect_status?: string;
+    payment_intent?: string;
+    payment_intent_client_secret?: string;
+  }>;
 }) {
-  const { redirect_status } = await searchParams;
-  const success = redirect_status === 'succeeded';
+  const { redirect_status, payment_intent } = await searchParams;
+
+  let success = false;
+  if (redirect_status === 'succeeded' && payment_intent) {
+    success = await verifyPaymentIntent(payment_intent);
+  }
 
   return (
     <div className="min-h-screen bg-(--bg) pt-24 flex items-center justify-center px-4">
