@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   title: "L'Écrin d'Acier — Mini Coffres Muraux Français",
   description: "Fabricant français de mini coffres muraux discrets depuis 1983. Simplicité, discrétion et efficacité. Modèles Ø60mm et Ø100mm en double bouton, triple bouton ou à clé.",
   keywords: "mini coffre mural, coffre discret, sécurité maison, fabrication française, écrin acier",
+  metadataBase: new URL('https://ecrin-acier.fr'),
 };
 
 export default function RootLayout({

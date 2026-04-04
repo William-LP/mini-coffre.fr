@@ -79,6 +79,7 @@ export default function Footer() {
       <div className="border-t border-white/10 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/35">
           <span>© {new Date().getFullYear()} L'Écrin d'Acier — Tous droits réservés</span>
+          <span>Site réalisé par <a href="https://zapia.fr" target="_blank" rel="noopener noreferrer" className="hover:text-white/60 transition-colors">zapia.fr</a></span>
           <span className="flex items-center gap-1.5">
             <Shield size={11} className="text-(--gold-mid)" />
             Paiement 100% sécurisé
